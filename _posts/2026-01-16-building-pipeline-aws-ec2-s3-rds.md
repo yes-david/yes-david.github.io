@@ -18,6 +18,7 @@ mkdir data
 cd data
 sudo wget -S "https://~~~.s3.ap-northeast-3.amazonaws.com/file/data.zip" -O ./data.zip
 unzip data.zip
+```
 sudo(SuperUser DO. 관리자 권한으로 실행), wget(Web Get. 인터넷에서 파일을 다운로드하는 프로그램 이름이다), -S(Server Response. 파일을 받으면서 서버가 보내는 응답 헤더 정보를 화면에 출력), -O ./data.zip(Output. 받은 파일을 data.zip이라는 이름으로 저장하라는 뜻)
 
 ### 2단계: IAM 역할 생성 및 부여
@@ -32,6 +33,7 @@ AWS RDS 콘솔을 켜서 MySQL 데이터베이스를 프리티어로 생성한�
 sudo yum install -y mariadb105
 mariadb --version
 mysql -h <RDS_Endpoint> -P 3306 -u admin -p
+```
 yum(Yellowdog Updater, Modified. Amazon Linux 등 Red Hat 계열 운영체제에서 mariadb 10.5 버전을 자동으로 설치), -y(확인 질문에 모두 예라고 답하라는 것), mysql(DB에 접속하는 프로그램을 실행. MariaDB는 MySQL과 호환되어 mysql 명령어를 그대로 쓴다), -h(Host. 접속할 데이터베이스의 주소를 입력), -P(Port. 데이터베이스가 사용하는 통로 번호. 3306은 MySQL/MariaDB의 기본 번호), -u(User. 접속할 사용자 아이디. 여기서는 admin인 것), -p(Password. 비밀번호를 입력하겠다는 옵션. 엔터를 치면 비밀번호 입력창이 뜬다)
 
 ### 5단계: S3로 원본 데이터 업로드
@@ -40,6 +42,7 @@ EC2 터미널 창에서 AWS CLI 명령어를 사용하여 아까 다운로드했
 aws s3 cp data.csv s3://<버킷명>/~~~/~~~/data.csv
 aws s3 cp "~~~.png" s3://<버킷명>/~~~/~~~/~~~.png --content-type image/png
 aws s3api head-object --bucket <버킷명> --key ~~~/~~~/~~~.png --query '[ETag, ContentLength]' --output text
+```
 1. 내 컴퓨터에 있는 data.csv 파일을 S3 버킷의 특정 폴더로 업로드
 2. 이미지를 업로드하면서 파일 형식을 image/png로 지정한다. 이렇게 해야 웹 브라우저에서 링크를 열었을 때 다운로드되지 않고 사진이 바로 보인다.
 3. 파일을 다운로드하지 않고 서버에 저장된 파일의 크기와 고유한 지문값만 확인. 보통 이 정보를 RDS에 기록할 때 사용한다
@@ -48,6 +51,7 @@ aws s3api head-object --bucket <버킷명> --key ~~~/~~~/~~~.png --query '[ETag,
 EC2 터미널 창에서 다시 RDS 데이터베이스에 접속한다. 준비된 명령어를 통해 CSV 파일의 내용을 자전거 대여 테이블에 일괄 적재한다. 이미지 메타데이터 테이블에는 앞선 단계에서 메모해둔 파일 상세 정보를 직접 입력하여 데이터 행을 추가한다.
 ```bash
 mysql -h <RDS_ENDPOINT> -P 3306 -u admin -p
+```
 ```sql
 USE ~~~;
 
@@ -59,6 +63,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (@dt, season, holiday, workingday, weather, temp, atemp, humidity, windspeed, casual, registered, count)
 SET datetime = STR_TO_DATE(@dt, '%Y-%m-%d %H:%i:%s');
+```
 ```sql
 USE ~~~;
 
@@ -67,7 +72,7 @@ INSERT INTO ~~~
 (image_id, s3_bucket, s3_key, etag, content_type, size_bytes, created_at)
 VALUES
 (
-  'cat',
+  'animal',
   <버킷명>,
   '~~~/~~~/~~~.png',
   <ETag>,
@@ -75,6 +80,7 @@ VALUES
   <ContentLength>,
   NOW()
 );
+```
 
 ### 7단계: 조건에 맞는 데이터 조회 및 저장 후 마무리
 적재가 완료된 자전거 대여 테이블에 특정 조건을 걸어 쿼리를 실행한다. 해당 쿼리의 결과를 S3 버킷의 폴더에 파일 형태로 저장한다. 요금이 나오지 않도록 실습에 사용한 모든 리소스를 삭제하고 마무리한다.
