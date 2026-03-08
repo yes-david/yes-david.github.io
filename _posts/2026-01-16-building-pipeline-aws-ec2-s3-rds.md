@@ -64,6 +64,7 @@ IGNORE 1 LINES
 (@dt, season, holiday, workingday, weather, temp, atemp, humidity, windspeed, casual, registered, count)
 SET datetime = STR_TO_DATE(@dt, '%Y-%m-%d %H:%i:%s');
 ```
+정형 데이터 적재
 ```sql
 USE ~~~;
 
@@ -81,6 +82,7 @@ VALUES
   NOW()
 );
 ```
+이미지 메타데이터 적재
 
 ### 7단계: 조건에 맞는 데이터 조회 및 저장 후 마무리
 적재가 완료된 자전거 대여 테이블에 특정 조건을 걸어 쿼리를 실행한다. 해당 쿼리의 결과를 S3 버킷의 폴더에 파일 형태로 저장한다. 요금이 나오지 않도록 실습에 사용한 모든 리소스를 삭제하고 마무리한다.
