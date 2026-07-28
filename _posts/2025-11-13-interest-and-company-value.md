@@ -2,7 +2,7 @@
 layout: post
 title: "Modeling Economic Phenomena: Interest Rate-Centered Analysis of Demand and Value"
 date: 2025-11-13
-categories: [CS, Economics, Analysis]
+categories: [Economics]
 ---
 
 ## Research Background: Phenomena and Problems
