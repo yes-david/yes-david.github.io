@@ -2,7 +2,7 @@
 layout: post
 title: "Six Ideas for Reading the Market"
 date: 2026-07-28
-categories: [Economics, Analysis]
+categories: [Economics]
 ---
 
 News always arrives in pieces. One day there is a story saying chip makers just posted their best profits ever. The same day, another story says their stock dropped sharply. The pieces do not explain each other.
