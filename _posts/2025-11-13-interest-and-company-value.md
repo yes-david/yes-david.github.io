@@ -9,50 +9,62 @@ categories: [CS, Economics, Analysis]
 
 Countless reports and news articles deliver information in fragments. Companies like Samsung Electronics chase the AI boom, while biotech firms focus on technology exports.
 
-This article focuses on two pillars of South Korea’s growth: semiconductors and biotech. In particular, Samsung Electronics (the largest KOSPI company by market cap) and Alteogen (the largest KOSDAQ company by market cap) symbolize the present and future of the Korean economy. While these topics appear distinct at first glance, they are interconnected through a single variable: the interest rate.
+This article focuses on two pillars of South Korea's growth, semiconductors and biotech. Samsung Electronics is the largest company on the KOSPI by market value and Alteogen is the largest on the KOSDAQ, and together they stand for the present and the future of the Korean economy. The two topics look separate at first glance, but a single variable connects them: the interest rate.
 
-Interest rates are more than just percentages—they represent the price of time, a measure of risk, and the discount rate used to evaluate the value of all assets. This semester, while taking Econometrics and learning regression models and forecasting techniques, I became fascinated by the engineering problems hidden within economic phenomena while analyzing the KOSPI index using ARIMA and LSTM models in a student research group.
+Interest rates are more than just percentages. They are the price of time, a measure of risk, and the discount rate used to value every asset. This semester, while taking Econometrics and learning regression models and forecasting techniques, I became fascinated by the engineering problems hidden inside economic phenomena, and by analyzing the KOSPI index with ARIMA and LSTM models in a student research group.
 
-Centering on interest rates, this article proposes methods to analyze and address these problems using data, mathematical models, and predictive algorithms.
-
----
-
-## Chapter 1. Interest Rates and the Economy: Multi-Variable Demand Forecasting – Samsung Electronics
-
-### Phenomenon
-Semiconductor companies like Samsung Electronics experience both cyclical demand influenced by interest rates (for PCs and smartphones) and structural growth driven by AI (HBM demand). These overlapping factors make it difficult to explain future demand using a single indicator.
-
-### Problem Definition
-A sophisticated time-series model is needed to forecast future semiconductor (DRAM/HBM) demand and prices, taking into account both traditional cyclical variables (interest rates, inventory) and structural growth variables (AI investment levels).
-
-### Proposed Approach
-* **Data Construction:** Include macro variables such as interest rates, exchange rates, and PC shipments, as well as server investments, HBM prices, and inventory data. Incorporate time-lagged features to capture the delayed effects of past values on future demand.
-* **Model Application:** Use ARIMA and LSTM models to learn time-series patterns and predict future demand, capturing both short-term fluctuations and long-term trends.
-* **Extension Ideas:** Machine learning models like Random Forest regression or XGBoost can further explore non-linear relationships and interaction effects between variables.
-
-### Analytical Goals
-Predict future demand, indirectly assess the influence of each variable, and compare results with traditional statistical models to gain deeper analytical insights.
+Centering on interest rates, this article proposes ways to analyze and address these problems using data, mathematical models, and predictive algorithms.
 
 ---
 
-## Chapter 2. Interest Rates and Time: Valuation Under Uncertainty – Alteogen
+## Chapter 1. Interest Rates and the Economy: Multi-Variable Demand Forecasting for Samsung Electronics
 
 ### Phenomenon
-Alteogen does not develop new drugs but exports the ALT-B4 platform technology, which converts existing drugs from intravenous to subcutaneous delivery. Its value comes not from upfront contracts but from royalties received years later if partner companies successfully commercialize SC products. When interest rates—or discount rates—rise, the present value of 10-year future royalties worth 1 trillion KRW drops to 610 billion KRW.
+
+Semiconductor companies like Samsung Electronics face two kinds of demand at the same time. One is cyclical demand for PCs and smartphones, which rises and falls with interest rates. The other is structural growth in HBM, driven by AI. Because the two overlap, no single indicator explains where demand is headed.
 
 ### Problem Definition
-The uncertainty lies in whether partner companies successfully commercialize SC products and the market penetration of those products. A valuation model is needed to reasonably account for both cash flow uncertainty and market interest rate uncertainty.
+
+Forecasting future demand and prices for DRAM and HBM calls for a time series model that can hold both sides at once. Traditional cyclical variables such as interest rates and inventory belong in it, and so do structural growth variables such as the level of AI investment.
 
 ### Proposed Approach
-* **Model Application:** Design a decision tree model dividing 10-year future cash flows into probabilistic scenarios: high market penetration (30%), medium (50%), low (20%). Since the platform technology is validated, modeling revenue uncertainty rather than complete failure is more realistic.
+
+The data should combine macro variables such as interest rates, exchange rates, and PC shipments with industry variables such as server investment, HBM prices, and inventory. Time-lagged features matter here, since past values affect demand only after a delay.
+
+ARIMA and LSTM models can then learn the patterns in that series and forecast demand, the first capturing short-term movement and the second capturing longer trends.
+
+Beyond that, machine learning models such as Random Forest regression or XGBoost can explore non-linear relationships and interaction effects between variables.
 
 ### Analytical Goals
-Conduct sensitivity analysis to see how changes in SC product penetration and applied discount rates affect overall corporate value. This helps distinguish whether stock price fluctuations are due to partner sales performance or simply changes in market interest rates.
+
+Predict future demand, assess indirectly how much each variable contributes, and compare the results against traditional statistical models to sharpen the analysis.
+
+---
+
+## Chapter 2. Interest Rates and Time: Valuation Under Uncertainty at Alteogen
+
+### Phenomenon
+
+Alteogen does not develop new drugs. It exports the ALT-B4 platform technology, which converts existing drugs from intravenous to subcutaneous delivery. Its value comes not from upfront contracts but from royalties that arrive years later, and only if partner companies succeed in commercializing SC products.
+
+A higher interest rate means a higher discount rate. Raise it, and royalties worth 1 trillion KRW ten years from now are worth 610 billion KRW today.
+
+### Problem Definition
+
+The uncertainty sits in two places: whether partner companies commercialize SC products successfully, and how far those products penetrate the market. A valuation model has to account for uncertainty in the cash flows and uncertainty in market interest rates at the same time.
+
+### Proposed Approach
+
+A decision tree can split ten years of future cash flows into weighted scenarios, with high market penetration at 30%, medium at 50%, and low at 20%. Since the platform technology is already validated, modeling uncertainty in revenue is more realistic than modeling outright failure.
+
+### Analytical Goals
+
+Run a sensitivity analysis to see how changes in SC product penetration and in the applied discount rate move overall corporate value. This makes it possible to tell whether a swing in the stock price came from partner sales performance or simply from a change in market interest rates.
 
 ---
 
 ## Conclusion: Seeking Models Beyond Phenomena
 
-The complexity of capital markets can ultimately be expressed through data, analyzed via models, and predicted with algorithms.
+The complexity of capital markets can ultimately be expressed through data, analyzed with models, and predicted with algorithms.
 
-As a student pursuing multiple majors, I aim not only to interpret macroeconomic trends but also to define hidden engineering problems within them and apply learned knowledge to find optimal solutions through research.
+As a student pursuing multiple majors, I aim not only to interpret macroeconomic trends but also to define the hidden engineering problems inside them, and to apply what I have learned to find optimal solutions through research.
