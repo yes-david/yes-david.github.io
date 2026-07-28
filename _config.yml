@@ -18,7 +18,6 @@ email:
 description: >- # this means to ignore newlines until "baseurl:"
   Exploring the intersection of Computer Science, Economics, and Data.
 url: "https://yes-david.github.io"
-twitter_username: username
 github_username: username
 minimal_mistakes_skin: default
 search: true
